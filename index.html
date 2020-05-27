@@ -18,15 +18,34 @@
         
       </div>
 
-      <div class="topnav">
-        <input type="text" placeholder="Search..">
-        <button type="submit">weather in my city</button>
+      <div class="container-fluid">
+        <div class="row">
+          <aside class="col-lg-3">
+            <div class="input-group" id="search-box">
+              <input type="text" class="form-control" id="search-value" placeholder="Search by City">
+              <div class="input-group-append">
+                <button class="btn btn-secondary" id="search-btn" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <ul class="list-group history"></ul>
+          </aside>
+          <div class="col-lg-9">
+            <div id="today" class="mt-3"></div>
+            <div id="forecast" class="mt-3"></div>
+          </div>
+        </div>
       </div>
-      <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Charlotte</li>
-          <li class="list-group-item">New York</li>
-          <li class="list-group-item">Reno</li>
+    </div>
+  
+  
+      <script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous"
+      ></script>
+      <script src="script.js"></script>
         </ul>
       </div>
 
