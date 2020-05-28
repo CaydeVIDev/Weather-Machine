@@ -80,6 +80,7 @@ console.log(searchValue)
         cardBody.append(title,description,temp,feelsLike,wind)
       
       }
+      
     
     })
   }
