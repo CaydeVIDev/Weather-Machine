@@ -47,7 +47,7 @@ $(document).ready(function () {
     $(".history").on("click","li",function() {
       searchWeather($(this).text())
     })
-
+console.log(sea)
   
     makeRow(searchValue);
     searchWeather(searchValue)
