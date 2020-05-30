@@ -23,7 +23,8 @@ $(document).ready(function () {
      
         $("#today").append(card);
         card.append(cardBody);
-        cardBody.append(title,description,temp,feelsLike,wind)
+        cardBody.append(title,description,temp,feelsLike,wind);
+        getForecast(response.coord.lat,response.coord.lon)
       }
     })
    
@@ -66,26 +67,49 @@ console.log(searchValue)
       success: function(response) {
         $("#today").empty();
         var currentTemp = Math.floor(response.main.temp);
-        var feelsTemp = Math.floor(response.main.feels_like)
+        var feelsTemp = Math.floor(response.main.feels_like);
+
         var card = $("<div>").addClass("card");
         var cardBody = $("<div>").addClass("card-body");
         var title = $("<h1>").addClass("card-title").text(response.name);
         var description = $("<h4>").addClass("card-text").text(response.weather[0].description)
-        var temp = $("<h4>").addClass("card-text").text("current tempature is: " + currentTemp +String.fromCharCode(176));
+        var temp = $("<h4>").addClass("card-text").text("current temperature is: " + currentTemp +String.fromCharCode(176));
         var feelsLike = $("<h4>").addClass("card-text").text("feels like " + feelsTemp +String.fromCharCode(176))
         var wind = $("<h4>").addClass("card-text").text("current wind speed: " + response.wind.speed)
      
         $("#today").append(card);
         card.append(cardBody);
-        cardBody.append(title,description,temp,feelsLike,wind)
+        cardBody.append(title,description,temp,feelsLike,wind);
       
+        getForecast(response.coord.lat, response.coord.lon)
       }
       
     
     })
   }
 
-  
+  function getForecast(lat,lon) {
+    $.ajax({
+      type: "GET",
+      url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=45ebbd33aab5c77a18994061b0a6ee6a&units=imperial
+      `,
+      dataType: "json",
+      success: function(res) { 
+        console.log (res);
+        for(var i = 1; i < 6; i++) {
+        var card = $("<div>").addClass("card");
+        var cardBody = $("<div>").addClass("card-body");
+        var dt = $("<p>").addClass("card-text").text("Hi");
+        var humidity= $("<p>").addClass("card-text").text(res.daily[i].humidity)
+
+        $("#forecast").append(card);
+        card.append(cardBody);
+        cardBody.append(dt,humidity);
+      }
+
+      }
+     });
+  };
 });
 
 
