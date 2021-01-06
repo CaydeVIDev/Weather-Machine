@@ -97,9 +97,9 @@ console.log(searchValue)
       success: function(res) { 
         console.log (res);
         for(var i = 1; i < 6; i++) {
-        var card = $("<div>").addClass("card");
+          var card = $("<div>").addClass("card");
         var cardBody = $("<div>").addClass("card-body");
-        var dt = $("<p>").addClass("card-text").text("Hi");
+        var dt = $("<p>").addClass("card-text").text("Forecast");
         var humidity= $("<p>").addClass("card-text").text(res.daily[i].humidity)
 
         $("#forecast").append(card);
